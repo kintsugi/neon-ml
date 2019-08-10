@@ -1,6 +1,7 @@
 [build]
+  base = "packages/site"
   command = "npm i -gs yarn && yarn build"
-  publish = "public"
+  publish = "packages/site/public"
 [[redirects]]
 from = "/api/dev/"
 to = "localhost:3000"
