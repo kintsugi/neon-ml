@@ -1,8 +1,8 @@
 {
-  "name": "neon-ml.cc",
-  "version": "0.1.0",
+  "name": "@neon-ml/site",
+  "version": "0.0.0-development",
   "private": true,
-  "description": "Homepage for Neon",
+  "description": "https://neon-ml.cc website",
   "keywords": [],
   "bugs": {
     "url": "https://github.com/engyn/neon-ml/issues"
