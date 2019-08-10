@@ -74,6 +74,7 @@ module.exports = {
       },
     ],
     'eslint-comments/disable-enable-pair': 'off',
+    '@typescript-eslint/interface-name-prefix': 'off',
   },
   settings: {
     'import/resolver': {

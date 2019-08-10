@@ -2,6 +2,14 @@
   command = "npm i -gs yarn && yarn build"
   publish = "public"
 [[redirects]]
+from = "/api/dev/"
+to = "localhost:3000"
+status = 200
+[[redirects]]
+from = "/api/v1/"
+to = "localhost:3000"
+status = 200
+[[redirects]]
 from = "/discord"
 to = "https://discord.gg/XafZ3ZM"
 status = 301
