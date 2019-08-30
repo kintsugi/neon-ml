@@ -6,11 +6,13 @@ import Switch from './switch';
 export interface RightSettingsMenuProps {
   onMinimizeClick: () => void;
   sidebarMinized: boolean;
+  onModeChange: (mode: string) => void;
 }
 
 const RightSettingsMenu: React.FC<RightSettingsMenuProps> = ({
   onMinimizeClick,
   sidebarMinized,
+  onModeChange,
 }: RightSettingsMenuProps) => {
   const [classes, setClasses] = useState('dropdown');
   const [darkMode, setDarkMode] = useState(true);
@@ -23,7 +25,9 @@ const RightSettingsMenu: React.FC<RightSettingsMenuProps> = ({
     }
   };
   const onDarkModeChange = (): void => {
+    const mode = !darkMode ? 'dark' : 'light';
     setDarkMode(!darkMode);
+    onModeChange(mode);
     if (typeof document !== 'undefined') {
       document.body.classList.toggle('white-content');
     }

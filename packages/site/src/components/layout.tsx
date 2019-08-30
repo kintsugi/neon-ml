@@ -7,7 +7,7 @@
  */
 
 // Redux
-import { changeTheme, selectThemeMode } from '@redux/theme';
+import { changeThemeMode, selectThemeMode } from '@redux/theme';
 import PerfectScrollbar from 'perfect-scrollbar';
 import React, { useEffect, useRef, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
@@ -49,13 +49,13 @@ export interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, location }: LayoutProps) => {
+  const dispatch = useDispatch();
   const [sidebarOpened, setSidebarOpen] = useState(false);
   const [sidebarMinimized, setSidebarMinimized] = useState(true);
   const [opacity, setOpacity] = useState(0);
   const mainPanel = useRef<HTMLDivElement>(null);
 
   const themeMode = useSelector(selectThemeMode);
-  useDispatch(changeTheme('light'));
 
   const closeSidebar = (): void => {
     setSidebarOpen(false);
@@ -79,6 +79,10 @@ const Layout: React.FC<LayoutProps> = ({ children, location }: LayoutProps) => {
       }
       document.body.classList.toggle('sidebar-mini');
     }
+  };
+
+  const onModeChange = (mode: string): void => {
+    dispatch(changeThemeMode(mode));
   };
 
   const showNavbarButton = (): void => {
@@ -162,6 +166,7 @@ const Layout: React.FC<LayoutProps> = ({ children, location }: LayoutProps) => {
         <RightSettingsMenu
           sidebarMinized={sidebarMinimized}
           onMinimizeClick={onMinimizeClick}
+          onModeChange={onModeChange}
         />
         <Footer fluid />
       </div>

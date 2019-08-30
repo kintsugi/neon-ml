@@ -22,14 +22,14 @@ export const selectThemeMode: Selector<State, string> = createSelector(
 
 const actionCreator = actionCreatorFactory('THEME');
 
-export const changeTheme = actionCreator<string>('CHANGE_THEME');
+export const changeThemeMode = actionCreator<string>('CHANGE_THEME');
 
 const onChangeTheme = (state: ThemeState, mode: string): ThemeState => {
   return { ...state, mode };
 };
 
 const reducer = reducerWithInitialState(INITIAL_STATE).case(
-  changeTheme,
+  changeThemeMode,
   onChangeTheme
 );
 

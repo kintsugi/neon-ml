@@ -1,9 +1,10 @@
+import Layout from '@components/layout';
+import SEO from '@components/seo';
+import { selectThemeMode } from '@redux/theme';
 import axios from 'axios';
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Card, CardBody, CardText, CardTitle, Col, Row } from 'reactstrap';
-
-import Layout from '../components/layout';
-import SEO from '../components/seo';
 
 export interface IndexPageProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,6 +12,7 @@ export interface IndexPageProps {
 }
 
 const IndexPage: React.FC<IndexPageProps> = ({ location }: IndexPageProps) => {
+  const themeMode = useSelector(selectThemeMode);
   useEffect(() => {
     const getApi = async (): Promise<void> => {
       const response = await axios.get('/api/local');
@@ -63,7 +65,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ location }: IndexPageProps) => {
                 <CardText>
                   <iframe
                     title="discord"
-                    src="https://discordapp.com/widget?id=597656508490055691&theme=dark"
+                    src={`https://discordapp.com/widget?id=597656508490055691&theme=${themeMode}`}
                     width="100%"
                     style={{ height: 'calc(50vh)' }}
                     frameBorder="0"
