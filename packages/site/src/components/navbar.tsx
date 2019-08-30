@@ -50,6 +50,9 @@ const NavBar: React.FC<NavBarProps> = ({
     setModalSearch(!modalSearch);
   };
   const updateColor = (): void => {
+    if (typeof window === 'undefined') {
+      return;
+    }
     if (window.innerWidth < 993 && collapseOpen) {
       setColor('bg-white');
     } else {
@@ -57,9 +60,13 @@ const NavBar: React.FC<NavBarProps> = ({
     }
   };
   useEffect(() => {
-    window.addEventListener('resize', updateColor);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', updateColor);
+    }
     return () => {
-      window.removeEventListener('resize', updateColor);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', updateColor);
+      }
     };
   });
   return (

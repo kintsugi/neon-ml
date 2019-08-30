@@ -4,6 +4,10 @@
     padding-top: 5px;
     padding-bottom: 5px;
     .togglebutton {
+      vertical-align: middle;
+      .label-switch {
+        top: -9px;
+      }
       .label-switch:last-child {
         left: unset;
         right: -10px;

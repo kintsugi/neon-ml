@@ -6,12 +6,20 @@
  */
 
 import { graphql, useStaticQuery } from 'gatsby';
-import PropTypes from 'prop-types';
 import React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
+
+import siteConfig from '../config/site';
+
+export interface SEOProps {
+  description?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  meta?: any[];
+  title: string;
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function SEO({ description, lang, meta, title }: any): React.ReactElement {
+const SEO: React.FC<SEOProps> = ({ description, meta, title }: SEOProps) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -26,64 +34,29 @@ function SEO({ description, lang, meta, title }: any): React.ReactElement {
     `
   );
 
+  const siteTitle = site.siteMetadata.title || siteConfig.siteTitle;
   const metaDescription = description || site.siteMetadata.description;
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
+    <Helmet>
+      <title>
+        {title} | {siteTitle}
+      </title>
+      <meta itemProp="name" content={siteTitle} />
+      <meta name="description" content={metaDescription} />
+      <meta name="og:title" content={title} />
+      <meta name="og:description" content={metaDescription} />
+      <meta name="og:type" content="website" />
+      <meta property="og:url" content={siteConfig.siteUrl} />
+      <meta property="og:locale" content={siteConfig.siteLanguage} />
+      <meta property="og:site_name" content={siteTitle} />
+    </Helmet>
   );
-}
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
 };
 
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
+SEO.defaultProps = {
+  meta: [],
+  description: '',
 };
 
 export default SEO;

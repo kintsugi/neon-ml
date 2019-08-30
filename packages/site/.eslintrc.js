@@ -7,7 +7,6 @@ module.exports = {
   },
   plugins: [
     '@typescript-eslint',
-    'import',
     'eslint-comments',
     'jest',
     'prettier',
@@ -18,6 +17,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:import/warnings',
     'plugin:import/errors',
+    'plugin:import/typescript',
     'plugin:eslint-comments/recommended',
     'plugin:jest/recommended',
     'plugin:promise/recommended',
@@ -74,10 +74,17 @@ module.exports = {
       },
     ],
     'eslint-comments/disable-enable-pair': 'off',
+    //for typescript-fsa-immer
+    'no-param-reassign': 'off',
+    'no-return-assign': 'off',
   },
   settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.js', '.jsx', '.ts', '.tsx'],
+    },
     'import/resolver': {
-      typescript: {},
+      node: true,
+      'eslint-import-resolver-typescript': true,
     },
   },
 };

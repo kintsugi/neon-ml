@@ -14,6 +14,6 @@ export default () => {
     composeWithDevTools(...enhancers)
   );
 
-  const sagasManager = sagaMiddleware.run(rootSaga);
-  return { store, sagasManager, sagaMiddleware };
+  sagaMiddleware.run(rootSaga);
+  return store;
 };

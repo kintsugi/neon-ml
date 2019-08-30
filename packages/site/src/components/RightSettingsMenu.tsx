@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import Switch from 'react-bootstrap-switch';
 import { FaCog } from 'react-icons/fa';
 
+import Switch from './switch';
+
 export interface RightSettingsMenuProps {
-  sidebarMinimized: boolean;
   onMinimizeClick: () => void;
+  sidebarMinized: boolean;
 }
 
 const RightSettingsMenu: React.FC<RightSettingsMenuProps> = ({
-  sidebarMinimized,
   onMinimizeClick,
+  sidebarMinized,
 }: RightSettingsMenuProps) => {
   const [classes, setClasses] = useState('dropdown');
   const [darkMode, setDarkMode] = useState(true);
@@ -23,7 +24,9 @@ const RightSettingsMenu: React.FC<RightSettingsMenuProps> = ({
   };
   const onDarkModeChange = (): void => {
     setDarkMode(!darkMode);
-    document.body.classList.toggle('white-content');
+    if (typeof document !== 'undefined') {
+      document.body.classList.toggle('white-content');
+    }
   };
 
   return (
@@ -42,26 +45,26 @@ const RightSettingsMenu: React.FC<RightSettingsMenuProps> = ({
           <li className="header-title">Minimize Sidebar</li>
           <li className="adjustments-line">
             <div className="togglebutton switch-sidebar-mini">
-              <span className="label-switch">OFF</span>
               <Switch
                 onChange={onMinimizeClick}
-                value={sidebarMinimized}
-                onText=""
-                offText=""
+                checked={sidebarMinized}
+                offLabel="OFF"
+                onLabel="ON"
+                checkedIcon={false}
+                uncheckedIcon={false}
               />
-              <span className="label-switch">ON</span>
             </div>
           </li>
           <li className="adjustments-line">
             <div className="togglebutton switch-change-color mt-3">
-              <span className="label-switch">LIGHT MODE</span>
               <Switch
                 onChange={onDarkModeChange}
-                value={darkMode}
-                onText=""
-                offText=""
+                checked={darkMode}
+                offLabel="LIGHT MODE"
+                onLabel="DARK MODE"
+                checkedIcon={false}
+                uncheckedIcon={false}
               />
-              <span className="label-switch">DARK MODE</span>
             </div>
           </li>
         </ul>

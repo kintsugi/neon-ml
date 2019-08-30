@@ -77,6 +77,9 @@ module.exports = {
     '@typescript-eslint/interface-name-prefix': 'off',
   },
   settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.js', '.jsx', '.ts', '.tsx'],
+    },
     'import/resolver': {
       typescript: {},
     },

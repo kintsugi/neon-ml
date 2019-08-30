@@ -10,15 +10,25 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-typescript',
-    'gatsby-plugin-react-helmet',
+    '@rhysforyou/gatsby-plugin-react-helmet-async',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
-    'gatsby-plugin-styled-components',
+    'gatsby-plugin-emotion',
     'gatsby-plugin-sitemap',
-
     'gatsby-plugin-robots-txt',
-    'gatsby-plugin-catch-links',
     'gatsby-plugin-netlify',
+    {
+      resolve: `gatsby-plugin-react-redux`,
+      options: {
+        pathToCreateStoreModule: './src/redux/createStore',
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-html-attributes',
+      options: {
+        lang: 'en',
+      },
+    },
     {
       resolve: 'gatsby-plugin-sass',
       options: {

@@ -13,11 +13,7 @@ module.exports = {
       "eslint --ext '.js,.jsx,.ts,.tsx' --fix",
       'git add',
     ],
-    '**/*.{js,jsx,ts,tsx,css}': [
-      'prettier --write',
-      'stylelint --fix',
-      'git add',
-    ],
+    '**/*.{js,jsx,ts,tsx,css}': ['prettier --write', 'git add'],
   },
   // The formatting tools are ordered to run sequentially
   concurrent: false,

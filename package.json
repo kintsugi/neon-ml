@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "lint:staged": "lerna run --parallel lint:staged",
+    "lint": "lerna run lint",
     "build": "lerna run --parallel build"
   },
   "devDependencies": {

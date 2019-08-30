@@ -15,9 +15,19 @@
     "jsx": "react",
     "moduleResolution": "node",
     "sourceMap": true,
-    "baseUrl": "./src",
-    "noEmit": true
+    "noEmit": true,
+    "typeRoots": ["./node_modules/@types", "./src/types", "../types"],
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": ["./src/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@images/*": ["./src/images/*"],
+      "@components/*": ["./src/components/*"],
+      "@containers/*": ["./src/containers/*"],
+      "@config/*": ["./src/config/*"],
+      "@redux/*": ["./src/redux/*"]
+    }
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "public"]
 }

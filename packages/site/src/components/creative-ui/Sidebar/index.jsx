@@ -37,7 +37,10 @@ class Sidebar extends React.Component {
     for (let i = 0; i < routes.length; i++) {
       if (routes[i].collapse && this.getCollapseInitialState(routes[i].views)) {
         return true;
-      } else if (window.location.href.indexOf(routes[i].path) !== -1) {
+      } else if (
+        typeof window !== 'undefined' &&
+        window.location.href.indexOf(routes[i].path) !== -1
+      ) {
         return true;
       }
     }
@@ -124,14 +127,20 @@ class Sidebar extends React.Component {
   };
   componentDidMount() {
     // if you are using a Windows Machine, the scrollbars will have a Mac look
-    if (navigator.platform.indexOf('Win') > -1) {
+    if (
+      typeof navigator !== 'undefined' &&
+      navigator.platform.indexOf('Win') > -1
+    ) {
       ps = new PerfectScrollbar(this.refs.sidebar);
     }
   }
   componentWillUnmount() {
     // we need to destroy the false scrollbar when we navigate
     // to a page that doesn't have this component rendered
-    if (navigator.platform.indexOf('Win') > -1) {
+    if (
+      typeof navigator !== 'undefined' &&
+      navigator.platform.indexOf('Win') > -1
+    ) {
       ps.destroy();
     }
   }

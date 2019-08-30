@@ -1,7 +1,6 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+/* eslint-disable @typescript-eslint/no-var-requires */
+const onCreateWebpackConfig = require('./gatsby/on-create-webpack-config');
+const createPages = require('./gatsby/create-pages');
 
-// You can delete this file if you're not using it
+exports.onCreateWebpackConfig = onCreateWebpackConfig;
+exports.createPages = createPages;
