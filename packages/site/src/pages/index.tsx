@@ -1,10 +1,11 @@
+import { Card, CardBody, CardText, CardTitle, Col, Row } from 'reactstrap';
+import React, { useEffect } from 'react';
+
 import Layout from '@components/layout';
 import SEO from '@components/seo';
+import rootApi from '@api/root';
 import { selectThemeMode } from '@redux/theme';
-import axios from 'axios';
-import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Card, CardBody, CardText, CardTitle, Col, Row } from 'reactstrap';
 
 export interface IndexPageProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -14,11 +15,11 @@ export interface IndexPageProps {
 const IndexPage: React.FC<IndexPageProps> = ({ location }: IndexPageProps) => {
   const themeMode = useSelector(selectThemeMode);
   useEffect(() => {
-    const getApi = async (): Promise<void> => {
-      const response = await axios.get('/api/local');
+    const getHello = async (): Promise<void> => {
+      const response = await rootApi.getHello();
       console.log(response);
     };
-    getApi();
+    getHello();
   });
   return (
     <Layout location={location}>

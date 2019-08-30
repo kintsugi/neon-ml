@@ -1,10 +1,10 @@
 module.exports = {
   '.js, .jsx': {
     parser: 'babylon',
-    style: 'module',
+    style: 'eslint',
   },
   '.ts, .tsx': {
     parser: 'typescript',
-    style: 'module',
+    style: 'eslint',
   },
 };

@@ -10,6 +10,7 @@
     "outDir": "./dist",
     "incremental": true,
     "typeRoots": ["./node_modules/@types", "./src/types", "../types"],
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "./"
   },
   "include": ["src/**/*"],

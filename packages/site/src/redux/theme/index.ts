@@ -1,13 +1,9 @@
 import { Selector, createSelector } from 'reselect';
+
 import actionCreatorFactory from 'typescript-fsa';
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
-
 import { State } from '../state';
 import { ThemeState } from './state';
-
-export interface ThemeState {
-  mode: string;
-}
 
 const INITIAL_STATE: ThemeState = {
   mode: 'dark',

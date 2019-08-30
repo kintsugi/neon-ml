@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   DropdownItem,
   DropdownMenu,
@@ -6,6 +5,8 @@ import {
   NavLink,
   UncontrolledDropdown,
 } from 'reactstrap';
+
+import React from 'react';
 
 export interface Notification {
   text: string;
@@ -19,7 +20,6 @@ export interface NotificationsProps {
 const NotificationList: React.FC<NotificationsProps> = ({
   list,
 }: NotificationsProps) => {
-  console.log(list);
   if (!list.length) {
     return <DropdownItem className="nav-item">No Notifications</DropdownItem>;
   }

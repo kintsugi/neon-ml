@@ -1,6 +1,3 @@
-import photo from '@images/favicon.png';
-import classNames from 'classnames';
-import React, { useEffect, useState } from 'react';
 import {
   Button,
   Collapse,
@@ -16,11 +13,16 @@ import {
   NavbarBrand,
   UncontrolledDropdown,
 } from 'reactstrap';
+import React, { useEffect, useState } from 'react';
 
-import NavbarToggle from './navbar-toggle';
-import Notifications, { Notification } from './notifications';
+import classNames from 'classnames';
+import photo from '@images/favicon.png';
+import { selectToken } from '@redux/user';
+import { useSelector } from 'react-redux';
 import ProfilePic from './profile-pic';
+import NavbarToggle from './navbar-toggle';
 import SidebarToggle, { SidebarToggleProps } from './sidebar-toggle';
+import Notifications, { Notification } from './notifications';
 
 interface SearchBarProps {
   toggleModalSearch: () => void;
@@ -55,6 +57,9 @@ const NavBar: React.FC<NavBarProps> = ({
   const [collapseOpen, setCollapseOpen] = useState(false);
   const [modalSearch, setModalSearch] = useState(false);
   const [color, setColor] = useState('navbar-transparent');
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const token = useSelector(selectToken);
 
   const toggleCollapse = (): void => {
     if (collapseOpen) {

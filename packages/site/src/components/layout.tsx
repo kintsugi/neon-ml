@@ -6,23 +6,23 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-// Redux
-import { changeThemeMode, selectThemeMode } from '@redux/theme';
-import PerfectScrollbar from 'perfect-scrollbar';
 import React, { useEffect, useRef, useState } from 'react';
+import { changeThemeMode, selectThemeMode } from '@redux/theme';
 import { useDispatch, useSelector } from 'react-redux';
 
-// Routes config file for navbar
-import routes from '../config/routes';
-// Images
-import logo from '../images/favicon.png';
-// eslint-disable-next-line import/no-unresolved
-import Sidebar from './creative-ui/Sidebar';
-// Components
+import PerfectScrollbar from 'perfect-scrollbar';
 import Footer from './footer';
 import Navbar from './navbar';
+// Components
+// Redux
 import RightSettingsMenu from './RightSettingsMenu';
+// eslint-disable-next-line import/no-unresolved
+import Sidebar from './creative-ui/Sidebar';
 import SidebarMini from './sidebar-mini';
+// Images
+import logo from '../images/favicon.png';
+// Routes config file for navbar
+import routes from '../config/routes';
 
 let ps: PerfectScrollbar;
 
