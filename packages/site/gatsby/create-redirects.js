@@ -1,7 +1,13 @@
 const redirects = [
   {
+    fromPath: '/api/local/*',
+    toPath: 'http://localhost/:splat',
+    statusCode: '200',
+    force: true,
+  },
+  {
     fromPath: '/api/*',
-    toPath: 'http://localhost:3000/:splat',
+    toPath: 'http://api.neon-ml.cc/:splat',
     statusCode: '200',
     force: true,
   },

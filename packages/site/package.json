@@ -35,7 +35,7 @@
     "lint:styles:fix": "yarn stylelint --fix './src/**/*.{js,jsx,ts,tsx,css,scss}'",
     "lint:watch": "onchange 'src/**/*' --initial --kill --delay 1000  -- yarn lint",
     "serve": "gatsby serve",
-    "start": "netlify dev -c \"gatsby develop\"",
+    "start": "netlify dev --live -c \"gatsby develop\"",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "typecheck": "yarn tsc --project ./tsconfig.json --noEmit --pretty"
   },

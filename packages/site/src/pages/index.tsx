@@ -13,7 +13,7 @@ export interface IndexPageProps {
 const IndexPage: React.FC<IndexPageProps> = ({ location }: IndexPageProps) => {
   useEffect(() => {
     const getApi = async (): Promise<void> => {
-      const response = await axios.get('/api');
+      const response = await axios.get('/api/local');
       console.log(response);
     };
     getApi();
