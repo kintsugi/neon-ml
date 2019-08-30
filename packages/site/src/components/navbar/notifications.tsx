@@ -16,6 +16,26 @@ export interface NotificationsProps {
   list: Notification[];
 }
 
+const NotificationList: React.FC<NotificationsProps> = ({
+  list,
+}: NotificationsProps) => {
+  console.log(list);
+  if (!list.length) {
+    return <DropdownItem className="nav-item">No Notifications</DropdownItem>;
+  }
+  return (
+    <span>
+      {list.map(({ text, href }: Notification) => {
+        return (
+          <NavLink tag="li" href={href}>
+            <DropdownItem className="nav-item">{text}</DropdownItem>
+          </NavLink>
+        );
+      })}
+    </span>
+  );
+};
+
 const Notifications: React.FC<NotificationsProps> = ({
   list,
 }: NotificationsProps) => (
@@ -26,11 +46,7 @@ const Notifications: React.FC<NotificationsProps> = ({
       <p className="d-lg-none">Notifications</p>
     </DropdownToggle>
     <DropdownMenu className="dropdown-navbar" right tag="ul">
-      {list.map(({ text, href }: Notification) => (
-        <NavLink tag="li" href={href}>
-          <DropdownItem className="nav-item">{text}</DropdownItem>
-        </NavLink>
-      ))}
+      <NotificationList list={list} />
     </DropdownMenu>
   </UncontrolledDropdown>
 );

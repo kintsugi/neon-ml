@@ -10,8 +10,7 @@
 import { changeThemeMode, selectThemeMode } from '@redux/theme';
 import PerfectScrollbar from 'perfect-scrollbar';
 import React, { useEffect, useRef, useState } from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { createSelector } from 'reselect';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Routes config file for navbar
 import routes from '../config/routes';
