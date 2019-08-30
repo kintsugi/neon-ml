@@ -28,10 +28,10 @@ export class LoggingInterceptor implements NestInterceptor {
       tap(() => {
         const end = Date.now();
         const ms = end - start;
-        Logger.log(`${req.method} ${req.url} - ${ms} ms`);
-        Logger.debug(`query:\n${inspect(req.query, false, 4, true)}`);
-        Logger.debug(`body:\n${inspect(req.body, false, 4, true)}`);
-        Logger.debug(`params:\n${inspect(req.params, false, 4, true)}`);
+        this.logger.log(`${req.method} ${req.url} - ${ms} ms`);
+        this.logger.debug(`query:\n${inspect(req.query, false, 4, true)}`);
+        this.logger.debug(`body:\n${inspect(req.body, false, 4, true)}`);
+        this.logger.debug(`params:\n${inspect(req.params, false, 4, true)}`);
       })
     );
   }
