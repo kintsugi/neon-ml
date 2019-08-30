@@ -1,10 +1,9 @@
 import { Card, CardBody, CardText, CardTitle, Col, Row } from 'reactstrap';
-import React, { useEffect } from 'react';
 
 import Layout from '@components/layout';
+import React from 'react';
 import SEO from '@components/seo';
-import rootApi from '@api/root';
-import { selectThemeMode } from '@redux/theme';
+import { selectThemeMode } from '@state/theme';
 import { useSelector } from 'react-redux';
 
 export interface IndexPageProps {
@@ -14,13 +13,6 @@ export interface IndexPageProps {
 
 const IndexPage: React.FC<IndexPageProps> = ({ location }: IndexPageProps) => {
   const themeMode = useSelector(selectThemeMode);
-  useEffect(() => {
-    const getHello = async (): Promise<void> => {
-      const response = await rootApi.getHello();
-      console.log(response);
-    };
-    getHello();
-  });
   return (
     <Layout location={location}>
       <SEO title="Home" />

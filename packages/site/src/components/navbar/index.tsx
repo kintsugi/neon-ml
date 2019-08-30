@@ -1,48 +1,23 @@
 import {
-  Button,
   Collapse,
   Container,
-  DropdownItem,
-  DropdownMenu,
   Input,
-  InputGroup,
   Modal,
   Nav,
-  NavLink,
   Navbar,
   NavbarBrand,
-  UncontrolledDropdown,
 } from 'reactstrap';
 import React, { useEffect, useState } from 'react';
-
 import classNames from 'classnames';
-import photo from '@images/favicon.png';
-import { selectToken } from '@redux/user';
+import { selectLoggedIn } from '@state/user';
 import { useSelector } from 'react-redux';
-import ProfilePic from './profile-pic';
-import NavbarToggle from './navbar-toggle';
 import SidebarToggle, { SidebarToggleProps } from './sidebar-toggle';
-import Notifications, { Notification } from './notifications';
 
-interface SearchBarProps {
-  toggleModalSearch: () => void;
-}
-const SearchBar: React.FC<SearchBarProps> = ({
-  toggleModalSearch,
-}: SearchBarProps) => (
-  <InputGroup className="search-bar" tag="li">
-    <Button
-      color="link"
-      data-target="#searchModal"
-      data-toggle="modal"
-      id="search-button"
-      onClick={toggleModalSearch}
-    >
-      <i className="tim-icons icon-zoom-split" />
-      <span className="d-lg-none d-md-block">Search</span>
-    </Button>
-  </InputGroup>
-);
+import LoggedInNavbar from './logged-in-navbar';
+import LoggedOutNavbar from './logged-out-navbar';
+import NavbarToggle from './navbar-toggle';
+import { Notification } from './notifications';
+import SearchBar from './search-bar';
 
 export interface NavBarProps extends SidebarToggleProps {
   text: string;
@@ -58,8 +33,7 @@ const NavBar: React.FC<NavBarProps> = ({
   const [modalSearch, setModalSearch] = useState(false);
   const [color, setColor] = useState('navbar-transparent');
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const token = useSelector(selectToken);
+  const loggedIn = useSelector(selectLoggedIn);
 
   const toggleCollapse = (): void => {
     if (collapseOpen) {
@@ -106,26 +80,11 @@ const NavBar: React.FC<NavBarProps> = ({
           <Collapse navbar isOpen={collapseOpen}>
             <Nav className="ml-auto" navbar>
               <SearchBar toggleModalSearch={toggleModalSearch} />
-              <Notifications list={notifications || []} />
-              <UncontrolledDropdown nav>
-                <ProfilePic src={photo}>
-                  <b className="caret d-none d-lg-block d-xl-block" />
-                  <p className="d-lg-none">Account</p>
-                </ProfilePic>
-
-                <DropdownMenu className="dropdown-navbar" right tag="ul">
-                  <NavLink tag="li" href="/profile">
-                    <DropdownItem className="nav-item">Profile</DropdownItem>
-                  </NavLink>
-                  <NavLink tag="li" href="/settings">
-                    <DropdownItem className="nav-item">Settings</DropdownItem>
-                  </NavLink>
-                  <DropdownItem divider tag="li" href="/logout" />
-                  <NavLink tag="li">
-                    <DropdownItem className="nav-item">Log out</DropdownItem>
-                  </NavLink>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+              {loggedIn ? (
+                <LoggedInNavbar list={notifications || []} />
+              ) : (
+                <LoggedOutNavbar />
+              )}
               <li className="separator d-lg-none" />
             </Nav>
           </Collapse>

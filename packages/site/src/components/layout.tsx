@@ -7,7 +7,7 @@
  */
 
 import React, { useEffect, useRef, useState } from 'react';
-import { changeThemeMode, selectThemeMode } from '@redux/theme';
+import { changeThemeMode, selectThemeMode } from '@state/theme';
 import { useDispatch, useSelector } from 'react-redux';
 
 import PerfectScrollbar from 'perfect-scrollbar';

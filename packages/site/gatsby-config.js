@@ -20,7 +20,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-react-redux`,
       options: {
-        pathToCreateStoreModule: './src/redux/createStore',
+        pathToCreateStoreModule: './src/state/createStore',
       },
     },
     {
