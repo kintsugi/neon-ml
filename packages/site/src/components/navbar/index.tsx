@@ -72,8 +72,12 @@ const NavBar: React.FC<NavBarProps> = ({
         <Container fluid>
           <div className="navbar-wrapper">
             <SidebarToggle {...sideBarToggleProps} />
-            <NavbarBrand href="#neon" onClick={e => e.preventDefault()}>
-              {text}
+            <NavbarBrand
+              className="shadow-box"
+              href="#neon"
+              onClick={e => e.preventDefault()}
+            >
+              <p className="shadow-box-content">{text}</p>
             </NavbarBrand>
           </div>
           <NavbarToggle toggleCollapse={toggleCollapse} />

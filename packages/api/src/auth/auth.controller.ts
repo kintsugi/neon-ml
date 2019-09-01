@@ -1,5 +1,6 @@
 import { Controller, Get, Res } from '@nestjs/common';
 import * as express from 'express';
+
 import { ConfigService } from '../config/config.service';
 
 @Controller('auth')
@@ -8,7 +9,7 @@ export class AuthController {
 
   DISCORD_CLIENT_SECRET = '';
 
-  discordCallbackURL = 'http://localhost:50451/api/discord/callback';
+  discordCallbackURL = 'http://localhost/api/discord/callback';
 
   constructor(config: ConfigService) {
     this.DISCORD_CLIENT_ID = config.get('DISCORD_CLIENT_ID');

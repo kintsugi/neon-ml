@@ -16,6 +16,7 @@ module.exports = {
     'gatsby-plugin-emotion',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-robots-txt',
+    'gatsby-plugin-catch-links',
     'gatsby-plugin-netlify',
     {
       resolve: `gatsby-plugin-react-redux`,

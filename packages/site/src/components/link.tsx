@@ -1,4 +1,4 @@
-import { Link as GatsbyLink } from 'gatsby';
+// import { Link as GatsbyLink } from 'gatsby';
 import { InputGroup } from 'reactstrap';
 import React from 'react';
 
@@ -8,9 +8,9 @@ export interface LinkProps {
 
 const Link: React.FC<LinkProps> = ({ to }: LinkProps) => (
   <InputGroup className="shadow-box">
-    <GatsbyLink className="shadow-box-content" to={to}>
+    <a className="shadow-box-content" href={to}>
       Log In
-    </GatsbyLink>
+    </a>
   </InputGroup>
 );
 

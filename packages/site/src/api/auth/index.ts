@@ -1,4 +1,4 @@
 import actions from './actions';
 import group from '../group';
 
-export default group(actions);
+export default group('/auth', actions);

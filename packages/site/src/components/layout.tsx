@@ -162,11 +162,7 @@ const Layout: React.FC<LayoutProps> = ({ children, location }: LayoutProps) => {
           />
           {children}
         </div>
-        <RightSettingsMenu
-          sidebarMinized={sidebarMinimized}
-          onMinimizeClick={onMinimizeClick}
-          onModeChange={onModeChange}
-        />
+
         <Footer fluid />
       </div>
     </>
