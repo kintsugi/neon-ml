@@ -11,6 +11,7 @@ const redirects = [
     statusCode: '200',
     force: true,
   },
+
   {
     fromPath: '/discord',
     toPath: 'https://discord.gg/XafZ3ZM',

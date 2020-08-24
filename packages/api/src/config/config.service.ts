@@ -29,6 +29,9 @@ export class ConfigService {
         .valid(['development', 'production', 'test', 'staging'])
         .default('development'),
       PORT: Joi.number().default(3000),
+      SITE_URL: Joi.string().required(),
+      HOSTNAME: Joi.string().required(),
+      API_PATH: Joi.string().required(),
       LOG_LEVEL: Joi.string()
         .valid(LOG_LEVELS)
         .default('INFO'),
