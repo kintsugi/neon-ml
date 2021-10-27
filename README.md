@@ -29,6 +29,7 @@ _Have an idea for the website? [Submit a pull request!_](https://github.com/engy
     ```sh
     cd neon-ml.cc/
     yarn
+    cd packages/site
     yarn start
     ```
 
